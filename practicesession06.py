@@ -1,186 +1,189 @@
-def exercise_1() -> tuple[str, str]:
+import random
+
+
+def exercise_1() -> set[str]:
     """
-    Answers a question about list comparison and identity.
+    Given the lists:
+    employees = ['Maria', 'Marius', 'Andrei', 'Bianca', 'Bogdan', 'Ana', 'Mihai']
+    fuel_card = ['Maria', 'Andrei']
+    gym_membership = ['Maria', 'Andrei', 'Mihai']
+
+    Which employees have both a fuel card and a gym membership?
+    Which employees do not have a fuel card and do not have a gym membership?
 
     Returns:
-        tuple[str, str]: Two strings explaining the expected output of the code.
+        set[str]: A set of employees who have both a fuel card and a gym membership.
     """
-    print('The following lists are defined:')
-    print('lst_1 = [1, 2, 3, 4]')
-    print('lst_2 = [1, 2, 3, 4]')
-    print('print(lst_1 == lst_2, lst_1 is lst_2)')
-    print('What is printed?')
-    print('a. True True')
-    print('b. True False')
-    print('c. False True')
-    print('d. False False')
-    print('Why did you make this choice?')
+    employees = ['Maria', 'Marius', 'Andrei', 'Bianca', 'Bogdan', 'Ana', 'Mihai']
+    fuel_card = ['Maria', 'Andrei']
+    gym_membership = ['Maria', 'Andrei', 'Mihai']
 
-    return '1. True: because the values are equal.', '1. False: because the memory address is different.'
+    new_employee = set(employee for employee in employees
+                       if employee in fuel_card and employee in gym_membership)
+
+    return new_employee
 
 
-def exercise_2(datas: list) -> int | float:
+def exercise_2() -> str:
     """
-    Displays the largest number in a list that can contain any type of data.
-
-    Parameters:
-        datas (list): A list that can contain any type of data.
+    Remove duplicates within a word entered from the keyboard.
 
     Returns:
-        int | float: The biggest number in the list.
+        str: The word with duplicates removed.
     """
-    number = []
+    word = input('Enter the word: ')
 
-    for element in datas:
-        if isinstance(element, int) or isinstance(element, float):
-            number.append(element)
+    word_chars = list(word)
+    unique_word_chars = set(word)
+    new_word = []
 
-    return max(number)
+    for char in word_chars:
+        if char in unique_word_chars and char not in new_word:
+            new_word.append(char)
+
+    return ''.join(new_word)
 
 
-def exercise_3(sentence: str) -> str:
+def exercise_4() -> None:
     """
-    Removes all the words that start with 'A'/'a' from a sentence.
-
-    Parameters:
-        sentence (str): A sentence to be checked (can contain any words).
-
-    Returns:
-        str: The sentence without the words starting with 'A'/'a'.
+    Find the next 4-digit number with all distinct digits entered
+        from the keyboard.
     """
-    all_words = sentence.split()
-    words_not_starting_with_a = []
-
-    for word in all_words:
-        if not word.startswith(('A', 'a')):
-            words_not_starting_with_a.append(word)
-
-    new_text = ' '.join(words_not_starting_with_a)
-
-    return new_text
-
-
-def exercise_4(list1: list[int | float], list2: list[int | float]) -> int | float:
-    """
-    Calculates the sum of the two smallest positive numbers in
-        two lists (which can contain negative values).
-
-    Parameters:
-        list1 (list[int | float]): A list that can contain numbers (positive or negative).
-        list2 (list[int | float]): A list that can contain numbers (positive or negative).
-
-    Returns:
-        int | float: The sum according to the condition.
-    """
-    min_positive_first_list = min(list1)
-    min_positive_second_list = min(list2)
-
-    sum_of_min_values = min_positive_first_list + min_positive_second_list
-
-    return sum_of_min_values
-
-
-def exercise_5(number: int) -> int:
-    """
-    Displays the next 4-digit number with all distinct digits.
-
-    Parameters:
-        number (int): A number to be checked.
-
-    Returns:
-        int: The next number with distinct digits.
-    """
+    number = input('Enter your number: ')
     not_distinct = True
-    number = int(number)
 
-    while not_distinct:
-        digits = set(str(number))
-        if len(digits) == 4:
-            return number
-        else:
-            number += 1
+    if number.isdigit():
+        number = int(number)
+        while not_distinct:
+            digits = set(str(number))
+            if len(digits) == 4:
+                print(f'The number with distinct number is {number}')
+                not_distinct = False
+            else:
+                number += 1
+    else:
+        print('Not a number')
 
 
-def exercise_6(words: list[str]) -> str:
+def exercise_5() -> None:
     """
-    Finds the longest common prefix among a list of words.
+    Print the set of consonants in a text entered from the keyboard.
+    """
+    text = input('Enter your text: ')
 
-    Parameters:
-        words (list[str]): A list of words (should contain at least 2).
+    consonants = set(char for char in text.lower() if char not in ['a', 'e', 'i', 'o', 'u', ' '])
+
+    print(consonants)
+
+
+def exercise_6() -> None:
+    """
+    Generate two lists of random numbers and print the common numbers
+        and different numbers between them.
+    """
+    first_list = random.sample(range(0, 25), 10)
+    second_list = random.sample(range(0, 25), 10)
+
+    common_numbers = [number for number in first_list if number in second_list]
+    different_numbers = [number for number in first_list if number not in second_list]
+
+    print(f'First list: {first_list}')
+    print(f'Second list: {second_list}')
+    print(f'Common numbers: {common_numbers}')
+    print(f'Different numbers: {different_numbers}')
+
+
+def exercise_7() -> None:
+    """
+    Generate a list of perfect squares less than 100 and print it.
+    """
+    perfect_squares = [number**2 for number in range(0, 101) if number**2 < 100]
+    print(perfect_squares)
+
+
+def exercise_8() -> None:
+    """
+    Convert all numbers in a list to strings and print the updated list.
+    """
+    numbers = [50, 9, 100, 3, 33, '22']
+
+    numbers_as_strings = [str(number) if isinstance(number, int) else number for number in numbers]
+    print(numbers_as_strings)
+
+
+def exercise_9() -> tuple[dict[str, int], dict[str, int]]:
+    """
+    Convert the prices of cars to Romanian Lei (RON) and filter the
+    cars with prices less than 20000.
+    Return two dictionaries: one with cars and their prices in RON,
+    and one with cheaper cars.
 
     Returns:
-        str: The longest common prefix as a string.
+        tuple[dict[str, int], dict[str, int]]: A tuple containing two dictionaries:
+            cars in RON and cheaper cars.
     """
-    shortest_word = min(words)
-    list_of_letters_prefix = []
+    cars = {
+        'Dacia': 15000,
+        'Toyota': 20000,
+        'BMW': 50000,
+        'Audi': 45000,
+        'Hyundai': 16500,
+        'Mercedes': 70000
+    }
 
-    for i in range(0, len(shortest_word)):
-        if words[0][i] == words[1][i] == words[2][i]:
-            list_of_letters_prefix.append(words[0][i])
-        else:
-            break
+    cars_in_ron = {car: price * 5 for car, price in cars.items()}
+    cars_lesser_price = {car: price for car, price in cars.items() if price < 20000}
 
-    common_sequence = ''.join(list_of_letters_prefix)
-
-    return common_sequence
+    return cars_in_ron, cars_lesser_price
 
 
-def exercise_7(words: list[str]) -> list[str]:
+def exercise_10() -> dict[str, int]:
     """
-    Displays a list where the words from the original list
-        are written in reverse (from right to left).
-
-    Parameters:
-        words (list[str]): A list of words (should contain at least 2 words).
+    Count the occurrence of each character (excluding spaces) in a text
+    entered from the keyboard.
 
     Returns:
-        list[str]: A list of reversed words.
+        dict[str, int]: A dictionary with each character and its frequency of occurrence.
     """
-    new_words = []
+    text = input('Enter your text: ')
 
-    for word in words:
-        split_word = list(word)
-        split_word.reverse()
-        new_words.append(''.join(split_word))
+    text_without_spaces = text.replace(' ', '')
+    character_occurrence = {letter: text.count(letter) for letter in text_without_spaces}
 
-    return new_words
+    return character_occurrence
 
 
-def exercise_8(words: list[str]) -> list[str]:
+def exercise_11() -> list[bool]:
     """
-    Displays the words that have a number of characters greater than
-        the average character count in a list of words.
-
-    Parameters:
-        words (list[str]): A list of words.
+    Check if each element in a list is a string and return a list of
+        corresponding boolean values.
 
     Returns:
-        list[str]: A list of words that meet the given condition.
+        list[bool]: A list of boolean values indicating whether each element is
+            a string or not.
     """
-    total_numbers_length = 0
+    datas = [1, 2, 3, 'Python', 'java']
 
-    for element in words:
-        total_numbers_length += len(element)
+    result = [True if isinstance(element, str) else False for element in datas]
 
-    words_arithmetic_length = round(total_numbers_length / len(words))
-    new_word_list = [element for element in words if len(element) > words_arithmetic_length]
-
-    return new_word_list
+    return result
 
 
-def exercise_9(word: str) -> str:
+def exercise_12() -> dict[int, bool]:
     """
-    Replaces the character '-' with the character '_'.
-
-    Parameters:
-        word (str): The word to have its specific characters replaced.
+    Check if each number in a list is greater than 10 and return a
+        dictionary with the numbers as keys and corresponding boolean values
+        indicating if they are greater than 10.
 
     Returns:
-        str: The replaced word.
+        dict[int, bool]: A dictionary with numbers as keys and boolean values indicating
+            if they are greater than 10.
     """
-    new_word = word.replace('-', '_')
+    numbers = [1, 2, 3, 100, 200, 300]
 
-    return new_word
+    result = {number: (True if number > 10 else False) for number in numbers}
+
+    return result
 
 
 if __name__ == "__main__":

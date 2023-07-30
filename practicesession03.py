@@ -1,115 +1,222 @@
-def exercise_1() -> str:
+import random
+import re
+
+
+def exercise_1() -> list[int]:
     """
-    Returns the answer to a question about valid variable names.
+    Displays all even numbers between 0 and 3000.
 
     Returns:
-        str: The answer to the question.
+        list[int]: A list of even numbers between the fixed interval.
     """
-    print('1. Which of the following is a valid variable name?')
-    print('a. my-name')
-    print('b. 2ndname')
-    print('c. 2nd_name')
-    print('d. second_name')
-    print('e. All of the above')
+    even_numbers = [number for number in range(0, 3001, 2)]
 
-    answer = 'd. second_name'
-
-    return answer
+    return even_numbers
 
 
-def exercise_2() -> str:
+def exercise_2() -> list[int]:
     """
-    Returns the answer to a question about float numbers.
+    Displays all prime numbers between 0 and 1000.
 
     Returns:
-        str: The answer to the question.
+        list[int]: A list of prime numbers between the fixed interval.
     """
-    print('Which number is not a float?')
-    print('a. -33.15')
-    print('b. 7')
-    print('c. 10.0')
-    print('d. 11.3')
-    print('e. All of the above')
+    prime_numbers = [i for i in range(2, 1001) if all(i % j != 0 for j in range(2, round(i/2)))]
 
-    answer = 'b. 7'
-
-    return answer
+    return prime_numbers
 
 
 def exercise_3() -> str:
     """
-    Returns the answer to a question about code lines that generate errors.
+    Prompts the user to guess a number randomly chosen by the program.
+    Gives hints after each guess to help the user know if they need to
+        go higher or lower.
 
     Returns:
-        str: The answer to the question.
+        str: A message indicating that the user guessed the number.
     """
-    print('Which lines of code generate errors?')
-    print('a. my_name = \'Ionut\' # numele meu')
-    print('b. my_name == \'Ionut\'')
-    print('c. my-name = 100')
-    print('d. 1st_name = \'\'\'Ionut Popescu’’’')
-    print('e. print(\'numele meu este: \', my_name)')
+    number = random.randint(1, 100)
+    guess = -1
 
-    answer = 'c, d -> Invalid syntax on naming the variable'
+    while guess != number:
+        guess = int(input('Insert your guess: '))
+        if guess < number:
+            print('You need to go higher.')
+        elif guess > number:
+            print('You need to go lower.')
+        else:
+            return 'You guessed the number.'
 
-    return answer
 
-
-def exercise_4(name: str, age: int) -> str:
+def exercise_4() -> str:
     """
-    Builds a message with the name and age of the user based on their inputs.
+    Creates a menu where the user can fill different information.
+
+    Returns:
+        str: A goodbye message.
+    """
+    while True:
+        print('Press 1 to enter the username.')
+        print('Press 2 to enter the password.')
+        print('Press 3 to enter the email.')
+        print('Press 4 to enter the details (user, password, email).')
+        print('Press E/e to exit the program')
+        choice = input('Enter between 1,2,3,4 or E/e: ')
+        choice = choice.lower()
+
+        if choice == '1':
+            username = input('Enter the username: ')
+            print(f'You inserted the username: {username}\n')
+        elif choice == '2':
+            password = input('Enter the password: ')
+            print(f'You inserted the password: {password}\n')
+        elif choice == '3':
+            email = input('Enter the email: ')
+            print(f'You inserted the email: {email}\n')
+        elif choice == '4':
+            username = input('Enter the username: ')
+            print(f'You inserted the username: {username}')
+            password = input('Enter the password: ')
+            print(f'You inserted the password: {password}')
+            email = input('Enter the email: ')
+            print(f'You inserted the email: {email}\n')
+        elif choice == 'e':
+            return 'Exiting the menu. Goodbye!'
+        else:
+            print('Invalid choice. Please try again.')
+
+
+def exercise_5(sentence: str) -> tuple[int, int]:
+    """
+    Calculates the number of vowels and consonants in a sentence.
 
     Parameters:
-        name (str): The name of the person.
-        age (int): The age of the person.
+        sentence (str): A sentence to be checked.
 
     Returns:
-        str: The message with name and age.
+        tuple[int, int]: The number of vowels and consonants.
     """
-    name_and_age = f'{name} is {age} years old'
+    sentence = sentence.lower()
+    number_of_vowels, number_of_consonants = 0, 0
 
-    return name_and_age
+    for element in sentence:
+        if element == ' ':
+            continue
+        else:
+            if element in ('a', 'e', 'i', 'o', 'u'):
+                number_of_vowels += 1
+            else:
+                number_of_consonants += 1
+
+    return number_of_vowels, number_of_consonants
 
 
-def exercise_5(weight: int | float, height: int | float) -> str:
+def exercise_6(text1: str, text2: str) -> dict[int: list[str]]:
     """
-    Evaluates user weight status based on the BMI (body mass index)
+    Determines the number of common characters from two strings.
 
     Parameters:
-        (int | float) weight: The weight of the person.
-        (int | float) height: the weight of the person.
+        text1 (str): The first text.
+        text2(str): The second text.
 
     Returns:
-        str: The weight status of the person as a message.
+        dict[int: list[str]]: A dictionary with the number of common characters and the list
+            of common characters.
     """
-    body_mass_index = float(weight) / pow(float(height), 2)
-    if body_mass_index < 18.5:
-        weight_status = 'Underweight'
-    elif body_mass_index < 24.9:
-        weight_status = 'Healthy weight'
-    elif body_mass_index < 29.9:
-        weight_status = 'Overweight'
-    else:
-        weight_status = 'Obese'
+    number_of_common_characters = 0
+    list_of_common_characters = []
 
-    return weight_status
+    set_of_text1 = set(text1)
+    set_of_text2 = set(text2)
+
+    for element in set_of_text1:
+        if element in set_of_text2:
+            number_of_common_characters += 1
+            list_of_common_characters.append(element)
+
+    return {number_of_common_characters: list_of_common_characters}
 
 
-def exercise_6(edge1: float, edge2: float) -> tuple[float, float]:
+def exercise_7(number: int) -> int:
     """
-    Calculates the area and perimeter of a right-angled triangle.
+    Calculates the Fibonacci of a number.
 
     Parameters:
-        edge1 (float): One edge of the triangle.
-        edge2 (float): The other edge of the triangle.
+        number (int): A natural number to be checked.
 
     Returns:
-        tuple[float, float]: A tuple containing the area and perimeter of the triangle.
+        int: The Fibonacci number.
     """
-    area = 0.5 * edge1 * edge2
-    perimeter = edge1 + edge2 + (edge1 ** 2 + edge2 ** 2) ** 0.5
+    product = 1
+    for i in range(1, number+1):
+        product *= i
 
-    return area, perimeter
+    return product
+
+
+def exercise_8(gmail_address: str) -> bool:
+    """
+    Validates a GMail address with the following rules:
+    - It must end with '@gmail.com'.
+    - It must be in the form 'name@gmail.com'.
+    - The name must not contain special characters: (+=~!@#$%^&*()[]{}\’”;,/”)
+
+    Parameters:
+        gmail_address (str): An email address (GMail only).
+
+    Returns:
+        bool: True if the GMail address is valid, False otherwise.
+    """
+    rgx_email_pattern = r'^(?!.*[+=~!@#$%^&*()\[\]{}\’”;,/])[a-zA-Z0-9._]+@gmail\.com$'
+    match = re.match(rgx_email_pattern, gmail_address)
+
+    if match:
+        return True
+    return False
+
+
+def exercise_9(sentence: str) -> bool:
+    """
+    Checks if a sentence has only distinct characters.
+
+    Parameters:
+        sentence (str): A sentence to be checked.
+
+    Returns:
+        bool: True if the sentence has only distinct characters, False otherwise.
+    """
+    sentence.replace(' ','')
+
+    if len(set(sentence)) == len(list(sentence)):
+        return True
+    return False
+
+
+def exercise_10(sentence: str) -> dict[str: int]:
+    """
+    Counts the number of letters, digits, symbols, and spaces within
+        a sentence.
+
+    Parameters:
+        sentence (str): A sentence (can contain any category of characters).
+
+    Returns:
+        dict[str: int]: A dictionary with each category and its corresponding
+            number of occurrences.
+    """
+    set_of_character = {'Chars': 0, 'Digits': 0, 'Symbols': 0, 'Spaces': 0}
+
+    for element in sentence:
+        if element.isalpha():
+            set_of_character['Chars'] += 1
+        elif element.isdigit():
+            set_of_character['Digits'] += 1
+        elif element.isspace():
+            set_of_character['Spaces'] += 1
+        else:
+            set_of_character['Symbols'] += 1
+
+    return set_of_character
 
 
 if __name__ == "__main__":

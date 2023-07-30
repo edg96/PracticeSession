@@ -1,222 +1,206 @@
-import random
-import re
-
-
-def exercise_1() -> list[int]:
+def exercise_1(employees: list[str], email: list[str]) -> dict[str, str]:
     """
-    Displays all even numbers between 0 and 3000.
-
-    Returns:
-        list[int]: A list of even numbers between the fixed interval.
-    """
-    even_numbers = [number for number in range(0, 3001, 2)]
-
-    return even_numbers
-
-
-def exercise_2() -> list[int]:
-    """
-    Displays all prime numbers between 0 and 1000.
-
-    Returns:
-        list[int]: A list of prime numbers between the fixed interval.
-    """
-    prime_numbers = [i for i in range(2, 1001) if all(i % j != 0 for j in range(2, round(i/2)))]
-
-    return prime_numbers
-
-
-def exercise_3() -> str:
-    """
-    Prompts the user to guess a number randomly chosen by the program.
-    Gives hints after each guess to help the user know if they need to
-        go higher or lower.
-
-    Returns:
-        str: A message indicating that the user guessed the number.
-    """
-    number = random.randint(1, 100)
-    guess = -1
-
-    while guess != number:
-        guess = int(input('Insert your guess: '))
-        if guess < number:
-            print('You need to go higher.')
-        elif guess > number:
-            print('You need to go lower.')
-        else:
-            return 'You guessed the number.'
-
-
-def exercise_4() -> str:
-    """
-    Creates a menu where the user can fill different information.
-
-    Returns:
-        str: A goodbye message.
-    """
-    while True:
-        print('Press 1 to enter the username.')
-        print('Press 2 to enter the password.')
-        print('Press 3 to enter the email.')
-        print('Press 4 to enter the details (user, password, email).')
-        print('Press E/e to exit the program')
-        choice = input('Enter between 1,2,3,4 or E/e: ')
-        choice = choice.lower()
-
-        if choice == '1':
-            username = input('Enter the username: ')
-            print(f'You inserted the username: {username}\n')
-        elif choice == '2':
-            password = input('Enter the password: ')
-            print(f'You inserted the password: {password}\n')
-        elif choice == '3':
-            email = input('Enter the email: ')
-            print(f'You inserted the email: {email}\n')
-        elif choice == '4':
-            username = input('Enter the username: ')
-            print(f'You inserted the username: {username}')
-            password = input('Enter the password: ')
-            print(f'You inserted the password: {password}')
-            email = input('Enter the email: ')
-            print(f'You inserted the email: {email}\n')
-        elif choice == 'e':
-            return 'Exiting the menu. Goodbye!'
-        else:
-            print('Invalid choice. Please try again.')
-
-
-def exercise_5(sentence: str) -> tuple[int, int]:
-    """
-    Calculates the number of vowels and consonants in a sentence.
+    Associates the email with an employee name.
 
     Parameters:
-        sentence (str): A sentence to be checked.
+        employees (list[str]): A list of employee names.
+        email (list[str]): A list of corresponding employee email addresses.
 
     Returns:
-        tuple[int, int]: The number of vowels and consonants.
+        dict[str, str]: A dictionary with the email (key) and the corresponding
+            employee associated with it (value).
     """
-    sentence = sentence.lower()
-    number_of_vowels, number_of_consonants = 0, 0
+    new_structure = {email[index]: employee for index, employee in enumerate(employees)}
 
-    for element in sentence:
-        if element == ' ':
-            continue
-        else:
-            if element in ('a', 'e', 'i', 'o', 'u'):
-                number_of_vowels += 1
-            else:
-                number_of_consonants += 1
-
-    return number_of_vowels, number_of_consonants
+    return new_structure
 
 
-def exercise_6(text1: str, text2: str) -> dict[int: list[str]]:
+def exercise_2() -> str:
     """
-    Determines the number of common characters from two strings.
+    Extracts the temperature in Celsius in Bucharest plus the sky condition.
+
+    Returns:
+        str: A message with the temperature and the sky condition.
+    """
+    weather_statistics = {
+        "coord": {
+            "lon": 26.1063,
+            "lat": 44.4323
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 286.87,
+            "feels_like": 286.07,
+            "temp_min": 284.2,
+            "temp_max": 289.74,
+            "pressure": 1022,
+            "humidity": 68
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.03,
+            "deg": 260
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1666984646,
+        "sys": {
+            "type": 2,
+            "id": 2037828,
+            "country": "RO",
+            "sunrise": 1666932421,
+            "sunset": 1666969892
+        },
+        "timezone": 10800,
+        "id": 683506,
+        "name": "Bucharest",
+        "cod": 200
+    }
+
+    temperature_and_sky_condition = f'{weather_statistics["name"]}: {weather_statistics["weather"][0]["description"]}'
+
+    return temperature_and_sky_condition
+
+
+def exercise_3(math_grades: dict[str, int]) -> list[str]:
+    """
+    Finds the student or students with the highest grade.
 
     Parameters:
-        text1 (str): The first text.
-        text2(str): The second text.
+        math_grades (dict[str, int]): A dictionary with student names as keys and
+            corresponding grades as values.
 
     Returns:
-        dict[int: list[str]]: A dictionary with the number of common characters and the list
-            of common characters.
+        list[str]: A list with one or more students that have the highest grade.
     """
-    number_of_common_characters = 0
-    list_of_common_characters = []
+    grades = math_grades.values()
+    max_grade = max(grades)
 
-    set_of_text1 = set(text1)
-    set_of_text2 = set(text2)
+    students_with_max_grade = [student for student in math_grades if math_grades[student] == max_grade]
 
-    for element in set_of_text1:
-        if element in set_of_text2:
-            number_of_common_characters += 1
-            list_of_common_characters.append(element)
-
-    return {number_of_common_characters: list_of_common_characters}
+    return students_with_max_grade
 
 
-def exercise_7(number: int) -> int:
+def exercise_4() -> dict[int, dict[str, any]]:
     """
-    Calculates the Fibonacci of a number.
+    Allows the user to select an employee and modify their salary.
+
+    Returns:
+        dict[int, dict[str, any]]: The dictionary with the updated salary.
+    """
+    employees = {
+        1: {'name': 'Andrei', 'salary': 100},
+        2: {'name': 'Vlad', 'salary': 500},
+        3: {'name': 'Ioana', 'salary': 330}
+    }
+
+    choice = -1
+    while choice not in [1, 2, 3]:
+        choice = int(input('Select the employee: '))
+
+    new_salary = input('Enter the new salary: ')
+    employees[choice]['salary'] = int(new_salary)
+
+    return employees
+
+
+def exercise_5(numbers: list[int]) -> dict[int, int]:
+    """
+    Checks the frequency of occurrence of each integer from a given list.
 
     Parameters:
-        number (int): A natural number to be checked.
+        numbers (list[int]): A list of integers.
 
     Returns:
-        int: The Fibonacci number.
+        dict[int, int]: A dictionary with each number (key) and its specific frequency
+            of occurrence (value).
     """
-    product = 1
-    for i in range(1, number+1):
-        product *= i
+    unique_numbers = set(numbers)
+    numbers_frequency = {number: numbers.count(number) for number in unique_numbers}
 
-    return product
+    return numbers_frequency
 
 
-def exercise_8(gmail_address: str) -> bool:
+def exercise_6(info_grades: dict[str, list[int | float]]) -> tuple[dict[str, float], list[str]]:
     """
-    Validates a GMail address with the following rules:
-    - It must end with '@gmail.com'.
-    - It must be in the form 'name@gmail.com'.
-    - The name must not contain special characters: (+=~!@#$%^&*()[]{}\’”;,/”)
+    Based on the grades of the students, calculates each student's average grade and
+    finds the student(s) that have at least 3 grades.
 
     Parameters:
-        gmail_address (str): An email address (GMail only).
+        info_grades (dict[str, list[int | float]]): A dictionary with student names
+            as keys and corresponding lists of grades as values.
 
     Returns:
-        bool: True if the GMail address is valid, False otherwise.
+        tuple[dict[str, float], list[str]]: A dictionary with each student (key) and their
+            average grade (value), and a list with the student(s) that have at least 3
+            grades if applicable.
     """
-    rgx_email_pattern = r'^(?!.*[+=~!@#$%^&*()\[\]{}\’”;,/])[a-zA-Z0-9._]+@gmail\.com$'
-    match = re.match(rgx_email_pattern, gmail_address)
+    students_average_grades = {student: round((sum(grades) / len(grades)), 2)
+                               for student, grades in info_grades.items()}
 
-    if match:
-        return True
-    return False
+    students_with_three_grades = [student for student in info_grades
+                                  if len(info_grades[student]) >= 3]
+
+    return students_average_grades, students_with_three_grades
 
 
-def exercise_9(sentence: str) -> bool:
+def exercise_7(files: list[str]) -> dict[str, str]:
     """
-    Checks if a sentence has only distinct characters.
+    Finds the corresponding path of each file based on its extension.
 
     Parameters:
-        sentence (str): A sentence to be checked.
+        files (list[str]): A list of file names.
 
     Returns:
-        bool: True if the sentence has only distinct characters, False otherwise.
+        dict[str, str]: A dictionary with each file (key) and its corresponding path (value).
     """
-    sentence.replace(' ','')
+    paths = {
+        'C://Downloads//Images': ['jpg', 'png', 'jpeg'],
+        'C://Downloads//Text': ['txt'],
+        'C://Downloads//Python_files': ['py'],
+        'C://Downloads//PDF': ['pdf'],
+    }
 
-    if len(set(sentence)) == len(list(sentence)):
-        return True
-    return False
+    files_and_extensions = {file: file[file.rfind('.') + 1:]
+                            for file in files
+                            for path, extension in paths.items()
+                            if file[file.rfind('.') + 1:] in extension}
+
+    return files_and_extensions
 
 
-def exercise_10(sentence: str) -> dict[str: int]:
+def exercise_8() -> tuple[dict[str, int], dict[str, str]]:
     """
-    Counts the number of letters, digits, symbols, and spaces within
-        a sentence.
-
-    Parameters:
-        sentence (str): A sentence (can contain any category of characters).
+    Finds the cars that are cheaper than 40000 Euros and
+    converts each car price to Romanian Lei (RON).
 
     Returns:
-        dict[str: int]: A dictionary with each category and its corresponding
-            number of occurrences.
+        tuple[dict[str, int], dict[str, str]]: A dictionary with each car (key) that
+            is cheaper than 40000 euros and its price (value),
+            and a dictionary with each car (key) and its price converted to Romanian Lei (value).
     """
-    set_of_character = {'Chars': 0, 'Digits': 0, 'Symbols': 0, 'Spaces': 0}
+    cars = {
+        'Dacia': 15000,
+        'Toyota': 20000,
+        'BMW': 50000,
+        'Audi': 45000,
+        'Hyundai': 16500,
+        'Mercedes': 70000
+    }
 
-    for element in sentence:
-        if element.isalpha():
-            set_of_character['Chars'] += 1
-        elif element.isdigit():
-            set_of_character['Digits'] += 1
-        elif element.isspace():
-            set_of_character['Spaces'] += 1
-        else:
-            set_of_character['Symbols'] += 1
+    cheaper_cars = {car: price for car, price in cars.items() if price < 40000}
+    cars_in_lei = {car: str(price * 5) + ' RON' for car, price in cars.items()}
 
-    return set_of_character
+    return cheaper_cars, cars_in_lei
 
 
 if __name__ == "__main__":

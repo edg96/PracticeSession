@@ -1,301 +1,186 @@
-import math
-import re
-
-
-def exercise_1(num1: int, num2: int) -> int | None:
+def exercise_1() -> tuple[str, str]:
     """
-    Returns the difference of two numbers if one condition is true, else None.
+    Answers a question about list comparison and identity.
+
+    Returns:
+        tuple[str, str]: Two strings explaining the expected output of the code.
+    """
+    print('The following lists are defined:')
+    print('lst_1 = [1, 2, 3, 4]')
+    print('lst_2 = [1, 2, 3, 4]')
+    print('print(lst_1 == lst_2, lst_1 is lst_2)')
+    print('What is printed?')
+    print('a. True True')
+    print('b. True False')
+    print('c. False True')
+    print('d. False False')
+    print('Why did you make this choice?')
+
+    return '1. True: because the values are equal.', '1. False: because the memory address is different.'
+
+
+def exercise_2(datas: list) -> int | float:
+    """
+    Displays the largest number in a list that can contain any type of data.
 
     Parameters:
-        num1 (int): A natural number (a).
-        num2 (int): A natural number (b).
+        datas (list): A list that can contain any type of data.
 
     Returns:
-        int | None: The difference of the two numbers if one condition is true, else None.
+        int | float: The biggest number in the list.
     """
-    if num1 > num2:
-        return num1 - num2
-    if num2 > num1:
-        return num2 - num1
-    return None
+    number = []
+
+    for element in datas:
+        if isinstance(element, int) or isinstance(element, float):
+            number.append(element)
+
+    return max(number)
 
 
-def exercise_2(number: int) -> int | str:
+def exercise_3(sentence: str) -> str:
     """
-    Checks if a 3-digit number is even or odd and returns a specific output based on the parity.
+    Removes all the words that start with 'A'/'a' from a sentence.
 
     Parameters:
-        number (int): A natural number.
+        sentence (str): A sentence to be checked (can contain any words).
 
     Returns:
-        int | str: If even, returns the sum of the number and its last digit.
-            If odd, checks if it is a multiple of 3.
+        str: The sentence without the words starting with 'A'/'a'.
     """
-    if number % 2 == 0:
-        sum_of_digits = number + number % 10
-        return sum_of_digits
-    if number % 3 == 0:
-        return f'{number} is a multiple of 3'
-    else:
-        return f'{number} is not a multiple of 3'
+    all_words = sentence.split()
+    words_not_starting_with_a = []
+
+    for word in all_words:
+        if not word.startswith(('A', 'a')):
+            words_not_starting_with_a.append(word)
+
+    new_text = ' '.join(words_not_starting_with_a)
+
+    return new_text
 
 
-def exercise_3(username: str, password: str) -> dict[str: str]:
+def exercise_4(list1: list[int | float], list2: list[int | float]) -> int | float:
     """
-    Checks username and password. If correct, proceeds to collect user details and
-        determines the programmer status.
+    Calculates the sum of the two smallest positive numbers in
+        two lists (which can contain negative values).
 
     Parameters:
-        username (str): The username of the user.
-        password (str): The password of the user.
+        list1 (list[int | float]): A list that can contain numbers (positive or negative).
+        list2 (list[int | float]): A list that can contain numbers (positive or negative).
 
     Returns:
-        dict[str: str]: A dictionary containing the person's details including 'First Name',
-              'Last Name', 'Email' and 'IT Status'.
+        int | float: The sum according to the condition.
     """
-    correct_username = 'windows_user’'
-    correct_password = 'P@rolla'
-    person_details = {'First Name': 'N/A', 'Last Name': 'N/A', 'Email': 'N/A', 'IT Status': 'N/A'}
-    it_experience = -1
+    min_positive_first_list = min(list1)
+    min_positive_second_list = min(list2)
 
-    if username != correct_username:
-        print('Wrong username. Access denied!')
-    elif password != correct_password:
-        print('Wrong password. Access denied!')
-    else:
-        print('You logged in successfully!')
-        person_details['First Name'] = input('Enter your first name: ')
-        person_details['Last Name'] = input('Enter your last name: ')
-        person_details['Email'] = input('Enter your email: ')
-        it_experience = input('Enter your IT experience in years: ')
+    sum_of_min_values = min_positive_first_list + min_positive_second_list
 
-    if it_experience > 3:
-        person_details['IT Status'] = 'Senior'
-    elif it_experience > 1:
-        person_details['IT Status'] = 'Intermediate'
-    elif it_experience > 0:
-        person_details['IT Status'] = 'Junior'
-
-    return person_details
+    return sum_of_min_values
 
 
-def exercise_4(file_full_name: str) -> str:
+def exercise_5(number: int) -> int:
     """
-    Returns the extension of a file name.
-
-    Parameters:
-        file_full_name (str): The full file name with the extension (sea_picture_20230422.jpg).
-
-    Returns:
-        str: The file extension (.txt, .jpg, .pdf).
-
-    """
-    extension_name = file_full_name[file_full_name.rfind('.'):]
-
-    return extension_name
-
-
-def exercise_5(sentence: str) -> int:
-    """
-    Returns the number of words in a sentence.
-
-    Parameters:
-        sentence (str): A sentence to be checked (should have at least 2 words).
-
-    Returns:
-        int: The number of words in the sentence.
-    """
-    number_of_words = 1
-    for element in sentence:
-        if element == ' ':
-            number_of_words += 1
-
-    return number_of_words
-
-
-def exercise_6(current_time: int) -> str:
-    """
-    Determines the color of a traffic light based on the current time.
-
-    Parameters:
-        current_time (str): The time to be checked in minutes
-            (e.g., 1 hour and 27 minutes -> value should be 87).
-
-    Returns:
-        str: The color of the traffic light.
-    """
-    last_digit = current_time % 10
-
-    if last_digit in (0, 1, 2, 3, 6, 7, 8):
-        return 'It\'s green!'
-    return 'It\'s red!'
-
-
-def exercise_7() -> str:
-    """
-    Searches for the username from a given string and returns it.
-
-    Returns:
-        str: The username.
-    """
-    text = 'platform: Solaris; version: 2.5; username: mcristi; all rights reserved to …'
-    index_username = text.find('username: ')
-    index_seperator = text.rfind(';')
-    username = text[index_username + len('username: '):index_seperator]
-
-    return username
-
-
-def exercise_8(mystery_variable: int | str) -> int | str:
-    """
-    Raises the mystery_variable to the power of 2 if it's a number or
-        returns the mystery_variable if it's a string.
-
-    Parameters:
-        mystery_variable (int | str): A mystery value to be evaluated.
-
-    Returns:
-        int | str: A value or a text depending on the condition met.
-    """
-    if mystery_variable.isdigit():
-        mystery_variable_raised = pow(mystery_variable, 2)
-        return mystery_variable_raised
-    return mystery_variable
-
-
-def exercise_9(sentence: str) -> int | str:
-    """
-    Returns the number of spaces in a string. If there are no spaces, displays a message.
-
-    Parameters:
-        sentence (str): A sentence to be checked.
-
-    Returns:
-        int | str: The number of spaces or a message depending on the condition met.
-    """
-    number_of_spaces = 0
-
-    for letter in sentence:
-        if letter == ' ':
-            number_of_spaces += 1
-
-    if number_of_spaces > 0:
-        return number_of_spaces
-    return 'There are not spaces in your string'
-
-
-def exercise_10(number: str) -> int:
-    """
-    Calculates the sum of all digits in a number and checks if the sum is divisible by 8.
-
-    Parameters:
-        number (str): A natural number to be checked.
-
-    Returns:
-        int: The sum of all digits of the number.
-    """
-    digits = number.split()
-    sum_of_number_elements = sum(digits)
-
-    print(f'{number} is ', end='')
-    if sum_of_number_elements % 8 != 0:
-        print('not ', end='')
-    print('divisible by 8.')
-
-    return sum_of_number_elements
-
-
-def exercise_11(email_address: str) -> str | None:
-    """
-    Extracts the domain of an email (gmail.com or yahoo.com).
-
-    Parameters:
-        email_address (str): The email address to be checked.
-
-    Returns:
-        str | None: The domain of the email or None if it is invalid.
-    """
-    rgx_email_pattern = r'^[a-zA-Z0-9_.-]+@(gmail|yahoo)\.com$'
-    match = re.match(rgx_email_pattern, email_address)
-
-    if match:
-        return email_address[email_address.rfind('@')::]
-    else:
-        return 'Invalid email'
-
-
-def exercise_12(sentence: str) -> int:
-    """
-    Calculates the number of vowels in a sentence.
-
-    Parameters:
-        sentence (str): A sentence to be checked (can be just a word).
-
-    Returns:
-        int: The number of vowels.
-    """
-    sentence = sentence.lower()
-    number_of_vowels = 0
-
-    for char in sentence:
-        if char in ('a', 'e', 'i', 'o', 'u'):
-            number_of_vowels += 1
-
-    return number_of_vowels
-
-
-def exercise_13(text_to_convert: str) -> float | str:
-    """
-    Tries to convert a text into a float. If it is not possible, displays a message.
-
-    Parameters:
-        text_to_convert (str): A text to be converted.
-
-    Returns:
-        float | str: The float value or the string message depending on whether it
-            can be converted or not.
-    """
-    rgx_email_pattern = r'^[1-9]\d*(\.\d+)?$'
-    match = re.match(rgx_email_pattern, text_to_convert)
-
-    if match:
-        return float(text_to_convert)
-    else:
-        return 'Cannot convert text. Invalid format'
-
-
-def exercise_14(number: int) -> int | str:
-    """
-    Produces a specific output depending on the value comparison to the fixed value 100.
+    Displays the next 4-digit number with all distinct digits.
 
     Parameters:
         number (int): A number to be checked.
 
     Returns:
-        int | str: The sum of 100 and the number digits or the string 'Python'.
+        int: The next number with distinct digits.
     """
+    not_distinct = True
     number = int(number)
-    if number > 100:
-        sum_of_digits = 0
-        while number > 0:
-            sum_of_digits += (number % 10)
-            number = math.floor(number / 10)
-        return sum_of_digits
-    else:
-        return 'Python'
+
+    while not_distinct:
+        digits = set(str(number))
+        if len(digits) == 4:
+            return number
+        else:
+            number += 1
 
 
-def exercise_15(sentence: str) -> bool:
+def exercise_6(words: list[str]) -> str:
     """
-    Checks if a sentence starts with the characters 'Python'.
+    Finds the longest common prefix among a list of words.
 
     Parameters:
-        sentence (str): A sentence to be checked.
+        words (list[str]): A list of words (should contain at least 2).
 
     Returns:
-        bool: True if the sentence starts with 'Python', False otherwise.
+        str: The longest common prefix as a string.
     """
-    return sentence.startswith('Python')
+    shortest_word = min(words)
+    list_of_letters_prefix = []
+
+    for i in range(0, len(shortest_word)):
+        if words[0][i] == words[1][i] == words[2][i]:
+            list_of_letters_prefix.append(words[0][i])
+        else:
+            break
+
+    common_sequence = ''.join(list_of_letters_prefix)
+
+    return common_sequence
+
+
+def exercise_7(words: list[str]) -> list[str]:
+    """
+    Displays a list where the words from the original list
+        are written in reverse (from right to left).
+
+    Parameters:
+        words (list[str]): A list of words (should contain at least 2 words).
+
+    Returns:
+        list[str]: A list of reversed words.
+    """
+    new_words = []
+
+    for word in words:
+        split_word = list(word)
+        split_word.reverse()
+        new_words.append(''.join(split_word))
+
+    return new_words
+
+
+def exercise_8(words: list[str]) -> list[str]:
+    """
+    Displays the words that have a number of characters greater than
+        the average character count in a list of words.
+
+    Parameters:
+        words (list[str]): A list of words.
+
+    Returns:
+        list[str]: A list of words that meet the given condition.
+    """
+    total_numbers_length = 0
+
+    for element in words:
+        total_numbers_length += len(element)
+
+    words_arithmetic_length = round(total_numbers_length / len(words))
+    new_word_list = [element for element in words if len(element) > words_arithmetic_length]
+
+    return new_word_list
+
+
+def exercise_9(word: str) -> str:
+    """
+    Replaces the character '-' with the character '_'.
+
+    Parameters:
+        word (str): The word to have its specific characters replaced.
+
+    Returns:
+        str: The replaced word.
+    """
+    new_word = word.replace('-', '_')
+
+    return new_word
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-from practicesession15ex1ex2 import *
-from practicesession15ex3 import *
-from practicesession15ex4 import *
+from practicesession9ex1ex2 import *
+from practicesession9ex3 import *
+from practicesession9ex4 import *
 
 
 def exercise_1(file_path: str):

@@ -1,4 +1,4 @@
-from practicesession15essentials import get_workbook
+from practicesession9essentials import get_workbook
 
 
 def get_employees_manager_pair(file_path: str) -> dict[str, str]:

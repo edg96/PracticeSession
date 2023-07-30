@@ -1,4 +1,4 @@
-from practicesession15essentials import get_workbook
+from practicesession9essentials import get_workbook
 
 
 def get_salary_values(file_path: str, sheet_name: str) -> list[int]:
