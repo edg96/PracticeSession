@@ -2,6 +2,7 @@
 ### Exercises in Python, from the most basic and easiest to some that are a little bit more challenging.
 <br/>
 Project content:
+<br/>
 
 | Session Name and Number        | Description                                                                            |
 |--------------------------------|----------------------------------------------------------------------------------------|
