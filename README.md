@@ -7,12 +7,12 @@ Project content:
 | Session Name and Number       | Description                                                                            |
 |-------------------------------|----------------------------------------------------------------------------------------|
 | Practice Session 1            | Basic exercises                                                                        |
-| Practice Session 2            | Exercises with primitive types and collections (different types and complexities)      |
-| Practice Session 3            | Exercises with primitive types and collections (different types and complexities)      |
-| Practice Session 4            | Exercises with primitive types and collections (different types and complexities)      |
-| Practice Session 5            | Exercises with primitive types and collections (different types and complexities)      |
-| Practice Session 6            | Exercises with primitive types and collections (different types and complexities)      |
-| Practice Session 7            | Exercises with primitive types and collections (different types and complexities)      |
+| Practice Session 2            | Exercises with primitive types and collections (different types and complexity)        |
+| Practice Session 3            | Exercises with primitive types and collections (different types and complexity)        |
+| Practice Session 4            | Exercises with primitive types and collections (different types and complexity)        |
+| Practice Session 5            | Exercises with primitive types and collections (different types and complexity)        |
+| Practice Session 6            | Exercises with primitive types and collections (different types and complexity)        |
+| Practice Session 7            | Exercises with primitive types and collections (different types and complexity)        |
 | Practice Session 8 Ex1        | File manipulation using a text file with names in it                                   |
 | Practice Session 8 Ex2        | File manipulation using a text file imitating a login process                          |
 | Practice Session 8 Ex3        | File manipulation using a CSV file imitating a login and register process              |
