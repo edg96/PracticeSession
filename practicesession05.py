@@ -6,7 +6,8 @@ def exercise_1() -> list[int]:
     """
     Displays all even numbers between 0 and 3000.
 
-    :return: A list of even numbers between the fixed interval.
+    Returns:
+        list[int]: A list of even numbers between the fixed interval.
     """
     even_numbers = [number for number in range(0, 3001, 2)]
 
@@ -17,7 +18,8 @@ def exercise_2() -> list[int]:
     """
     Displays all prime numbers between 0 and 1000.
 
-    :return: A list of prime numbers between the fixed interval.
+    Returns:
+        list[int]: A list of prime numbers between the fixed interval.
     """
     prime_numbers = [i for i in range(2, 1001) if all(i % j != 0 for j in range(2, round(i/2)))]
 
@@ -27,9 +29,11 @@ def exercise_2() -> list[int]:
 def exercise_3() -> str:
     """
     Prompts the user to guess a number randomly chosen by the program.
-    Gives hints after each guess to help the user know if they need to go higher or lower.
+    Gives hints after each guess to help the user know if they need to
+        go higher or lower.
 
-    :return: A message indicating that the user guessed the number.
+    Returns:
+        str: A message indicating that the user guessed the number.
     """
     number = random.randint(1, 100)
     guess = -1
@@ -48,7 +52,8 @@ def exercise_4() -> str:
     """
     Creates a menu where the user can fill different information.
 
-    :return: A goodbye message.
+    Returns:
+        str: A goodbye message.
     """
     while True:
         print('Press 1 to enter the username.')
@@ -85,8 +90,11 @@ def exercise_5(sentence: str) -> tuple[int, int]:
     """
     Calculates the number of vowels and consonants in a sentence.
 
-    :param sentence: A sentence to be checked.
-    :return: The number of vowels and consonants.
+    Parameters:
+        sentence (str): A sentence to be checked.
+
+    Returns:
+        tuple[int, int]: The number of vowels and consonants.
     """
     sentence = sentence.lower()
     number_of_vowels, number_of_consonants = 0, 0
@@ -103,13 +111,17 @@ def exercise_5(sentence: str) -> tuple[int, int]:
     return number_of_vowels, number_of_consonants
 
 
-def exercise_6(text1: str, text2: str) -> dict:
+def exercise_6(text1: str, text2: str) -> dict[int: list[str]]:
     """
     Determines the number of common characters from two strings.
 
-    :param text1: The first text.
-    :param text2: The second text.
-    :return: A dictionary with the number of common characters and the list of common characters.
+    Parameters:
+        text1 (str): The first text.
+        text2(str): The second text.
+
+    Returns:
+        dict[int: list[str]]: A dictionary with the number of common characters and the list
+            of common characters.
     """
     number_of_common_characters = 0
     list_of_common_characters = []
@@ -129,8 +141,11 @@ def exercise_7(number: int) -> int:
     """
     Calculates the Fibonacci of a number.
 
-    :param number: A natural number to be checked.
-    :return: The Fibonacci number.
+    Parameters:
+        number (int): A natural number to be checked.
+
+    Returns:
+        int: The Fibonacci number.
     """
     product = 1
     for i in range(1, number+1):
@@ -146,8 +161,11 @@ def exercise_8(gmail_address: str) -> bool:
     - It must be in the form 'name@gmail.com'.
     - The name must not contain special characters: (+=~!@#$%^&*()[]{}\’”;,/”)
 
-    :param gmail_address: An email address (GMail only).
-    :return: True if the GMail address is valid, False otherwise.
+    Parameters:
+        gmail_address (str): An email address (GMail only).
+
+    Returns:
+        bool: True if the GMail address is valid, False otherwise.
     """
     rgx_email_pattern = r'^(?!.*[+=~!@#$%^&*()\[\]{}\’”;,/])[a-zA-Z0-9._]+@gmail\.com$'
     match = re.match(rgx_email_pattern, gmail_address)
@@ -161,8 +179,11 @@ def exercise_9(sentence: str) -> bool:
     """
     Checks if a sentence has only distinct characters.
 
-    :param sentence: A sentence to be checked.
-    :return: True if the sentence has only distinct characters, False otherwise.
+    Parameters:
+        sentence (str): A sentence to be checked.
+
+    Returns:
+        bool: True if the sentence has only distinct characters, False otherwise.
     """
     sentence.replace(' ','')
 
@@ -171,12 +192,17 @@ def exercise_9(sentence: str) -> bool:
     return False
 
 
-def exercise_10(sentence: str) -> dict:
+def exercise_10(sentence: str) -> dict[str: int]:
     """
-    Counts the number of letters, digits, symbols, and spaces within a sentence.
+    Counts the number of letters, digits, symbols, and spaces within
+        a sentence.
 
-    :param sentence: A sentence (can contain any category of characters).
-    :return: A dictionary with each category and its corresponding number of occurrences.
+    Parameters:
+        sentence (str): A sentence (can contain any category of characters).
+
+    Returns:
+        dict[str: int]: A dictionary with each category and its corresponding
+            number of occurrences.
     """
     set_of_character = {'Chars': 0, 'Digits': 0, 'Symbols': 0, 'Spaces': 0}
 

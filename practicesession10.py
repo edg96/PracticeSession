@@ -5,7 +5,8 @@ def add_elements_with_append() -> float:
     """
     Adds elements to a list using the append method in a for loop.
 
-    :return: The time taken to add elements to the list.
+    Returns:
+        float: The time taken to add elements to the list.
     """
     lst = []
     start_time = time.time()
@@ -19,7 +20,8 @@ def add_elements_with_comprehension() -> float:
     """
     Adds elements to a list using list comprehension.
 
-    :return: The time taken to add elements to the list.
+    Returns:
+        float: The time taken to add elements to the list.
     """
     start_time = time.time()
     _ = [i for i in range(10_000)]
@@ -27,11 +29,12 @@ def add_elements_with_comprehension() -> float:
     return end_time - start_time
 
 
-def exercise_1() -> dict:
+def exercise_1() -> dict[str: float]:
     """
     Compares the time taken to add elements to a list using append and list comprehension.
 
-    :return: A dictionary containing the time taken with append and list comprehension.
+    Returns:
+        dict[str: float]: A dictionary containing the time taken with append and list comprehension.
     """
     time_with_append = add_elements_with_append()
     time_with_comprehension = add_elements_with_comprehension()
@@ -46,8 +49,11 @@ def exercise_2(text: str) -> int:
     """
     Finds the numbers in a text and returns their sum.
 
-    :param text: The input string.
-    :return: The sum of all numbers found in the text.
+    Parameters:
+        text (str): The input string.
+
+    Returns:
+        int: The sum of all numbers found in the text.
     """
     words_and_numbers = text.split()
     numbers = [int(element) for element in words_and_numbers if element.isdigit()]
@@ -55,12 +61,15 @@ def exercise_2(text: str) -> int:
     return sum(numbers)
 
 
-def exercise_3(*args: any) -> list:
+def exercise_3(*args: any) -> list[any]:
     """
     Returns a list containing all the elements passed as arguments.
 
-    :param args: Variable number of arguments of any type.
-    :return: A list containing all the elements passed as arguments.
+    Parameters:
+        args (any): Variable number of arguments of any type.
+
+    Returns:
+        list[any]: A list containing all the elements passed as arguments.
     """
     return list(args)
 
@@ -69,8 +78,11 @@ def exercise_4(file_name: str) -> str:
     """
     Returns the file type based on the given file name.
 
-    :param file_name: The name of the file.
-    :return: The file type.
+    Parameters:
+        file_name (str): The name of the file.
+
+    Returns:
+        str: The file type.
     """
     return file_name[file_name.rfind('.')::]
 
@@ -79,8 +91,11 @@ def exercise_5(word: str) -> bool:
     """
     Checks if a word contains unique letters.
 
-    :param word: The input word.
-    :return: True if the word contains unique letters, False otherwise.
+    Parameters:
+        word (str): The input word.
+
+    Returns:
+        bool: True if the word contains unique letters, False otherwise.
     """
     return len(word) == len(set(word))
 
@@ -89,8 +104,11 @@ def exercise_6(numbers: int) -> str:
     """
     Converts a number into its decimal representation.
 
-    :param numbers: The input number.
-    :return: The decimal representation of the number.
+    Parameters:
+        numbers (int): The input number.
+
+    Returns:
+        str: The decimal representation of the number.
     """
     number_decimals = [int(digit) * 10 ** (len(str(numbers)) - 1 - i)
                        for i, digit in enumerate(str(numbers))
@@ -99,12 +117,15 @@ def exercise_6(numbers: int) -> str:
     return ' + '.join(map(str, number_decimals))
 
 
-def exercise_7(words: list[str]) -> dict:
+def exercise_7(words: list[str]) -> dict[str: int]:
     """
     Calculates the score of each word based on the sum of positions of its letters in the alphabet.
 
-    :param words: A list of words.
-    :return: A dictionary mapping each word to its score.
+    Parameters:
+        words (list[str]): A list of words.
+
+    Returns:
+        dict[str: int]: A dictionary mapping each word to its score.
     """
     points = {word: sum(ord(letter) for letter in word.lower()) for word in words}
 
@@ -114,8 +135,6 @@ def exercise_7(words: list[str]) -> dict:
 def exercise_8():
     """
     Sorts the `datas` list by name, age, and height in ascending order.
-
-    :return: None
     """
     data1 = ('Dan', 33, 170)
     data2 = ('Mihai', 20, 180)
@@ -130,12 +149,16 @@ def exercise_8():
     print(datas)
 
 
-def exercise_9(numbers: list[int]) -> dict:
+def exercise_9(numbers: list[int]) -> dict[int: int]:
     """
     Checks each number and associates how many numbers are lesser in value than itself.
 
-    :param numbers: A list of integers.
-    :return: A dictionary with each number as the key and the number of values lesser than itself as the value.
+    Parameters:
+        numbers (list[int]): A list of integers.
+
+    Returns:
+        dict[int: int]: A dictionary with each number as the key and the number of values
+            lesser than itself as the value.
     """
     numbers.sort()
 
@@ -146,8 +169,8 @@ def exercise_10(number_of_lines: int):
     """
     Prints a pattern of asterisks in a triangle shape.
 
-    :param number_of_lines: The number of lines in the triangle pattern.
-    :return: None
+    Parameters:
+        number_of_lines (int): The number of lines in the triangle pattern.
     """
     current_line = 1
     while current_line <= number_of_lines:
@@ -161,8 +184,11 @@ def exercise_11(text: str) -> str:
     """
     Removes multiple spaces between words in a string and returns the updated string.
 
-    :param text: The input string.
-    :return: The string with multiple spaces between words replaced by a single space.
+    Parameters:
+        text (str): The input string.
+
+    Returns:
+        str: The string with multiple spaces between words replaced by a single space.
     """
     return ' '.join(text.split())
 

@@ -9,7 +9,7 @@ def get_employees_manager_pair(file_path: str) -> dict[str, str]:
         file_path (str): The file path to the Excel file.
 
     Returns:
-        dict: A dictionary with the employees names as the keys and their corresponding
+        dict[str, str]: A dictionary with the employees names as the keys and their corresponding
             manager names as the values.
     """
     employees_manager_id_pair = get_employees_manager_id_pair(file_path, 'Departament IT')
@@ -28,8 +28,8 @@ def get_managers_number_of_employees(file_path: str) -> dict[str, int]:
         file_path (str): The file path to the Excel file.
 
     Returns:
-        dict: A dictionary with the managers names as keys and their corresponding
-            number of employees as the values.
+        dict[str, int]: A dictionary with the managers names as keys and their
+            corresponding number of employees as the values.
     """
     employees_manager_id_pair = get_employees_manager_id_pair(file_path, 'Departament IT')
     managers_names_id_pair = get_managers_names_id_pair(file_path, 'Manager')
@@ -49,8 +49,8 @@ def get_employees_manager_id_pair(file_path: str, sheet_name: str) -> dict[str, 
         sheet_name (str): The name of the sheet containing the employee information.
 
     Returns:
-        dict: A dictionary with the employees names as keys and their corresponding manager
-            id as the values.
+        dict[str, int]: A dictionary with the employees names as keys and their corresponding
+            manager id as the values.
     """
     workbook = get_workbook(file_path)
     it_department_employees = workbook[sheet_name]
@@ -70,7 +70,8 @@ def get_managers_names_id_pair(file_path: str, sheet_name: str) -> dict[int, str
         sheet_name (str): The name of the sheet containing the manager information.
 
     Returns:
-        dict: A dictionary with the managers ids as keys and their corresponding names as the values.
+        dict[int, str]: A dictionary with the managers ids as keys and their corresponding
+            names as the values.
     """
     workbook = get_workbook(file_path)
     managers = workbook[sheet_name]

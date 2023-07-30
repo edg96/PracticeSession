@@ -1,7 +1,7 @@
 from practicesession15essentials import get_workbook
 
 
-def get_salaries_in_euros(file_path: str, sheet_name: str) -> list:
+def get_salaries_in_euros(file_path: str, sheet_name: str) -> list[int]:
     """
     Gets the list of salaries in euros using an OpenPyXl workbook object containing the
         according information in a specified sheet.
@@ -11,7 +11,7 @@ def get_salaries_in_euros(file_path: str, sheet_name: str) -> list:
         sheet_name (str): The name of the sheet containing the salary information.
 
     Returns:
-        list: A list containing the salaries in euros.
+        list[int]: A list containing the salaries in euros.
     """
     workbook = get_workbook(file_path)
     it_department_information = workbook[sheet_name]
@@ -28,7 +28,7 @@ def salary_euros_to_ron(salaries_in_euros: list[int]) -> list[int]:
         salaries_in_euros (list[int]): The salaries in euro.
 
     Returns:
-        list: The list of salaries converted from euro to ron.
+        list[int]: The list of salaries converted from euro to ron.
     """
     salaries_in_ron = [salary * 5 for salary in salaries_in_euros]
 

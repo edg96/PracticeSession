@@ -11,7 +11,8 @@ def exercise_1() -> set[str]:
     Which employees have both a fuel card and a gym membership?
     Which employees do not have a fuel card and do not have a gym membership?
 
-    :return: A set of employees who have both a fuel card and a gym membership.
+    Returns:
+        set[str]: A set of employees who have both a fuel card and a gym membership.
     """
     employees = ['Maria', 'Marius', 'Andrei', 'Bianca', 'Bogdan', 'Ana', 'Mihai']
     fuel_card = ['Maria', 'Andrei']
@@ -27,7 +28,8 @@ def exercise_2() -> str:
     """
     Remove duplicates within a word entered from the keyboard.
 
-    :return: The word with duplicates removed.
+    Returns:
+        str: The word with duplicates removed.
     """
     word = input('Enter the word: ')
 
@@ -112,11 +114,13 @@ def exercise_8() -> None:
 def exercise_9() -> tuple[dict[str, int], dict[str, int]]:
     """
     Convert the prices of cars to Romanian Lei (RON) and filter the
-        cars with prices less than 20000.
+    cars with prices less than 20000.
     Return two dictionaries: one with cars and their prices in RON,
-        and one with cheaper cars.
+    and one with cheaper cars.
 
-    :return: A tuple containing two dictionaries: cars in RON and cheaper cars.
+    Returns:
+        tuple[dict[str, int], dict[str, int]]: A tuple containing two dictionaries:
+            cars in RON and cheaper cars.
     """
     cars = {
         'Dacia': 15000,
@@ -136,9 +140,10 @@ def exercise_9() -> tuple[dict[str, int], dict[str, int]]:
 def exercise_10() -> dict[str, int]:
     """
     Count the occurrence of each character (excluding spaces) in a text
-        entered from the keyboard.
+    entered from the keyboard.
 
-    :return: A dictionary with each character and its frequency of occurrence.
+    Returns:
+        dict[str, int]: A dictionary with each character and its frequency of occurrence.
     """
     text = input('Enter your text: ')
 
@@ -153,8 +158,9 @@ def exercise_11() -> list[bool]:
     Check if each element in a list is a string and return a list of
         corresponding boolean values.
 
-    :return: A list of boolean values indicating whether each element is
-        a string or not.
+    Returns:
+        list[bool]: A list of boolean values indicating whether each element is
+            a string or not.
     """
     datas = [1, 2, 3, 'Python', 'java']
 
@@ -169,8 +175,9 @@ def exercise_12() -> dict[int, bool]:
         dictionary with the numbers as keys and corresponding boolean values
         indicating if they are greater than 10.
 
-    :return: A dictionary with numbers as keys and boolean values indicating
-        if they are greater than 10.
+    Returns:
+        dict[int, bool]: A dictionary with numbers as keys and boolean values indicating
+            if they are greater than 10.
     """
     numbers = [1, 2, 3, 100, 200, 300]
 

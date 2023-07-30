@@ -1,4 +1,4 @@
-def read_accounts_from_txt(file_path: str) -> list:
+def read_accounts_from_txt(file_path: str) -> list[str]:
     """
     Read accounts from a text file.
 
@@ -6,7 +6,7 @@ def read_accounts_from_txt(file_path: str) -> list:
         file_path (str): The path to the text file containing accounts.
 
     Returns:
-        list: A list of accounts read from the text file.
+        list[str]: A list of accounts read from the text file.
     """
     with open(file_path, 'r') as txt_file:
         accounts = txt_file.read().split()

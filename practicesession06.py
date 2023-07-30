@@ -2,7 +2,8 @@ def exercise_1() -> tuple[str, str]:
     """
     Answers a question about list comparison and identity.
 
-    :return: Two strings explaining the expected output of the code.
+    Returns:
+        tuple[str, str]: Two strings explaining the expected output of the code.
     """
     print('The following lists are defined:')
     print('lst_1 = [1, 2, 3, 4]')
@@ -22,8 +23,11 @@ def exercise_2(datas: list) -> int | float:
     """
     Displays the largest number in a list that can contain any type of data.
 
-    :param datas: A list that can contain any type of data.
-    :return: The biggest number in the list.
+    Parameters:
+        datas (list): A list that can contain any type of data.
+
+    Returns:
+        int | float: The biggest number in the list.
     """
     number = []
 
@@ -38,8 +42,11 @@ def exercise_3(sentence: str) -> str:
     """
     Removes all the words that start with 'A'/'a' from a sentence.
 
-    :param sentence: A sentence to be checked (can contain any words).
-    :return: The sentence without the words starting with 'A'/'a'.
+    Parameters:
+        sentence (str): A sentence to be checked (can contain any words).
+
+    Returns:
+        str: The sentence without the words starting with 'A'/'a'.
     """
     all_words = sentence.split()
     words_not_starting_with_a = []
@@ -58,9 +65,12 @@ def exercise_4(list1: list[int | float], list2: list[int | float]) -> int | floa
     Calculates the sum of the two smallest positive numbers in
         two lists (which can contain negative values).
 
-    :param list1: A list that can contain numbers (positive or negative).
-    :param list2: A list that can contain numbers (positive or negative).
-    :return: The sum according to the condition.
+    Parameters:
+        list1 (list[int | float]): A list that can contain numbers (positive or negative).
+        list2 (list[int | float]): A list that can contain numbers (positive or negative).
+
+    Returns:
+        int | float: The sum according to the condition.
     """
     min_positive_first_list = min(list1)
     min_positive_second_list = min(list2)
@@ -74,8 +84,11 @@ def exercise_5(number: int) -> int:
     """
     Displays the next 4-digit number with all distinct digits.
 
-    :param number: A number to be checked.
-    :return: The next number with distinct digits.
+    Parameters:
+        number (int): A number to be checked.
+
+    Returns:
+        int: The next number with distinct digits.
     """
     not_distinct = True
     number = int(number)
@@ -92,8 +105,11 @@ def exercise_6(words: list[str]) -> str:
     """
     Finds the longest common prefix among a list of words.
 
-    :param words: A list of words (should contain at least 2).
-    :return: The longest common prefix as a string.
+    Parameters:
+        words (list[str]): A list of words (should contain at least 2).
+
+    Returns:
+        str: The longest common prefix as a string.
     """
     shortest_word = min(words)
     list_of_letters_prefix = []
@@ -114,8 +130,11 @@ def exercise_7(words: list[str]) -> list[str]:
     Displays a list where the words from the original list
         are written in reverse (from right to left).
 
-    :param words: A list of words (should contain at least 2 words).
-    :return: A list of reversed words.
+    Parameters:
+        words (list[str]): A list of words (should contain at least 2 words).
+
+    Returns:
+        list[str]: A list of reversed words.
     """
     new_words = []
 
@@ -132,8 +151,11 @@ def exercise_8(words: list[str]) -> list[str]:
     Displays the words that have a number of characters greater than
         the average character count in a list of words.
 
-    :param words: A list of words.
-    :return: A list of words that meet the given condition.
+    Parameters:
+        words (list[str]): A list of words.
+
+    Returns:
+        list[str]: A list of words that meet the given condition.
     """
     total_numbers_length = 0
 
@@ -150,8 +172,11 @@ def exercise_9(word: str) -> str:
     """
     Replaces the character '-' with the character '_'.
 
-    :param word: The word to have its specific characters replaced.
-    :return: The replaced word.
+    Parameters:
+        word (str): The word to have its specific characters replaced.
+
+    Returns:
+        str: The replaced word.
     """
     new_word = word.replace('-', '_')
 

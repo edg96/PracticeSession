@@ -1,4 +1,4 @@
-def read_names_from_txt(file_path: str) -> list:
+def read_names_from_txt(file_path: str) -> list[str]:
     """
     Read names from a text file.
 
@@ -6,7 +6,7 @@ def read_names_from_txt(file_path: str) -> list:
         file_path (str): The path to the text file containing names.
 
     Returns:
-        list: A list of names read from the text file.
+        list[str]: A list of names read from the text file.
     """
     with open(file_path, 'r') as txt_file:
         names = txt_file.read().split()

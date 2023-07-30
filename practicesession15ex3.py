@@ -1,7 +1,7 @@
 from practicesession15essentials import get_workbook
 
 
-def get_salary_values(file_path: str, sheet_name: str) -> list:
+def get_salary_values(file_path: str, sheet_name: str) -> list[int]:
     """
     Extracts salary values in euros from the specified worksheet.
 
@@ -10,7 +10,7 @@ def get_salary_values(file_path: str, sheet_name: str) -> list:
         sheet_name (str): The name of the worksheet containing salary information.
 
     Returns:
-        list: A list of salary values in euros.
+        list[int]: A list of salary values in euros.
     """
     workbook = get_workbook(file_path)
     sheet = workbook[sheet_name]

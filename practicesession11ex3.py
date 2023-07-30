@@ -47,12 +47,13 @@ def read_names_from_csv(file_path: str):
             print(row)
 
 
-def get_user_input():
+def get_user_input() -> dict[str, str]:
     """
     Get user input for user, password, first name, last name and email.
 
     Returns:
-        dict: A dictionary containing user input for first name, last name, user, password, and email.
+        dict[str, str]: A dictionary containing user input for first name, last name,
+            user, password, and email.
     """
     user = input('Enter your user: ')
     password = input('Enter your password: ')
