@@ -1,0 +1,4 @@
+user:mciurea;passwd:testing_123;system:windows
+user:alexp;passwd:testing_123;system:redhat
+user:mihair;passwd:testing_123;system:mac
+user:gabriela_ch;passwd:testing_123;system:android

@@ -1,0 +1,10 @@
+Bogdan: 12
+Carmen: 1
+Claudia: 12
+Diana: 12
+Elena: 24
+Gabriela: 12
+Gheorghe: 12
+Maria: 11
+Marius: 12
+Ortansa: 12
