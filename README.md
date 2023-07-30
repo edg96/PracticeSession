@@ -1,8 +1,8 @@
 # Practice sessions
 ### Exercises in Python, from the most basic and easiest to some that are a little bit more challenging.
-<br/>
+<br><br/>
 Project content:
-<br/>
+<br><br/>
 
 | Session Name and Number        | Description                                                                            |
 |--------------------------------|----------------------------------------------------------------------------------------|
