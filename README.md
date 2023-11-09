@@ -1,6 +1,7 @@
 # Practice sessions
+
 ### Exercises in Python, from the most basic and easiest to some that are a little bit more challenging.
-<br><br/>
+
 Project content:
 <br><br/>
 
@@ -21,3 +22,15 @@ Project content:
 | Practice Session 9 Ex1 Ex2    | Functions that gets the employees and the managers information's based on the CSV file |
 | Practice Session 9 Ex3        | Functions that are operating on the salaries of the employees (euro)                   |
 | Practice Session 9 Ex4        | Functions that are operating on the salaries of the employees (ron)                    |
+
+## Credits
+
+Author: Dragos-Gabriel Enache
+
+Maintainer: Dragos-Gabriel Enache
+
+Email: edragosgabriel@gmail.com
+
+GitHub: https://github.com/edg96
+
+Status: Finished (Closed for further modifications)
