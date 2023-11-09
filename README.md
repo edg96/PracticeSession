@@ -33,8 +33,4 @@ Email: edragosgabriel@gmail.com
 
 GitHub: https://github.com/edg96
 
-<<<<<<< HEAD
 Status: Finished
-=======
-Status: Finished (Closed for further modifications)
->>>>>>> 6d875fcb4686a816857ae895fac6cd587bb68f09
